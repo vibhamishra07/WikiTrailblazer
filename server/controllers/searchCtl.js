@@ -5,10 +5,14 @@ const Constant=require('../constants.js')
 
 
 searchCtl.countTrailUrls = async (req, res) => {
-    const { startUrl, maxSteps } = req.body;
+    const startUrl = req.body.url;
+
+    if(!startUrl){
+        return res.status(Constant.BAD_REQUEST).json({message:Constant.REQUEST_BAD_REQUEST});
+    }
 
     try {
-        const totalTrails = await countTrailsToPhilosophy(startUrl, maxSteps);
+        const totalTrails = await countTrailsToPhilosophy(startUrl, 30);
         res.json({ totalTrails });
     } catch (error) {
         console.error(error);
