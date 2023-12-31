@@ -35,9 +35,9 @@ const SearchPage = () => {
       {/* Result */}
       <div className='flex justify-center flex-col items-center pt-10 h-[50%] w-[100%] text-center'>
         {loading && <p>Loading...</p>}
-        {error && <p>Error: {error}</p>}
-        {result && (
-          <div className=' flex flex-col justify-center items-center text-center'>
+        {error &&  !loading && <p>Error: {error}</p>}
+        {result && !loading && (
+          <div className=' flex flex-col justify-center items-center text-center max-h-[-webkit-fill-available]'>
             <p>Total Trails: {result.totalTrails?.count}</p>
             {/* Links card */}
             <List urls={result.totalTrails?.urls} />

@@ -15,8 +15,7 @@ searchCtl.countTrailUrls = async (req, res) => {
         const totalTrails = await countTrailsToPhilosophy(startUrl, 30);
         res.json({ totalTrails });
     } catch (error) {
-        console.error(error);
-        res.status(Constant.SERVER_ERROR).json(error.message || Constant.REQUEST_SERVER_ERROR);
+        res.status(Constant.SERVER_ERROR).json({message:error.message || Constant.REQUEST_SERVER_ERROR});
     }
 }
 
